@@ -1,4 +1,5 @@
 #include "elevador.h"
+#include <iostream>
 #include <thread>
 
 class Pessoa{
@@ -6,15 +7,11 @@ class Pessoa{
         int andar_atual;
         int andar_destino;
         bool no_elevador;
-
+        std::thread my_thread;
     public:
-        Pessoa(int andar_atual,int andar_destino) :
-                andar_atual(andar_atual),
-                andar_destino(andar_destino),
-                no_elevador(false)
-                {};
-        void requisita_elevador(Elevador elevador);
-        void seleciona_destino(Elevador elevador);
-        void controla_pessoa(Elevador elevador);
-        std::thread thread_pessoa(Elevador elevador);
+        Pessoa(int andar_atual, int andar_destino, Elevador*);
+        void requisita_elevador(Elevador*);
+        void seleciona_destino(Elevador*);
+        void controla_pessoa(Elevador*);
+        void join();
 };

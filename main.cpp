@@ -1,14 +1,13 @@
 #include "pessoa.h"
-#include <thread>
 
 int main(){
 
-    Elevador elevador = Elevador(5);
+    Elevador elevador;
 
-    Pessoa *p1 = new Pessoa(2,3);
-    std::thread th_p1 = p1->thread_pessoa(elevador);
-
-    th_p1.join();
+    Pessoa *pessoa1 = new Pessoa(4,2,&elevador);
+    pessoa1->join();
+    
+    delete pessoa1;
 
     return 0;
 }

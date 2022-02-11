@@ -1,9 +1,5 @@
 #include "elevador.h"
 #include <iostream>
-#include <mutex>
-using namespace std;
-
-std::mutex mtx;
 
 Elevador::Elevador(){
     this->andares = 4;
@@ -12,7 +8,6 @@ Elevador::Elevador(){
     this->porta_aberta = false;
     this->_requisitado = false;
     this->_movimentando = false;
-
 };
 
 Elevador::Elevador(int andares){
@@ -25,20 +20,22 @@ Elevador::Elevador(int andares){
 };
 
 void Elevador::subindo(){
+    std::cout << "Elevador Subindo" << std::endl;
     while(this->andar_atual < this->andar_requisitado){
-        cout << "Andar: "<< this->andar_atual <<"\n";
-        this->_movimentando = true;
         this->andar_atual++;
+        this->_movimentando = true;
+        std::cout << "Andar: "<< this->andar_atual <<"\n";
     }
     this->_movimentando = false;
     return;
 };
 
 void Elevador::descendo(){
+    std::cout << "Elevador Descendo" << std::endl;
     while(this->andar_atual > this->andar_requisitado){
-        cout << "Andar: "<< this->andar_atual <<"\n";
-        this->_movimentando = true;
         this->andar_atual--;
+        this->_movimentando = true;
+        std::cout << "Andar: "<< this->andar_atual <<"\n";
     }
     this->_movimentando = false;
     return;
@@ -88,15 +85,15 @@ void Elevador::fecha_porta(){
 
 int Elevador::checa_requisicao(int andar) const{
     if (sentido == UP && andar < this->andar_atual){	
-        cout << "WARN: Elevador está subindo\n";
+        std::cout << "WARN: Elevador está subindo\n";
         return 1;
     }
  	else if (sentido == DOWN && andar > this->andar_atual){
-        cout << "WARN: Elevador está descendo\n";
+        std::cout << "WARN: Elevador está descendo\n";
  		return 2;
     }
  	else if (andar < 1 || andar > this->andares){
-        cout << "ERROR: Andar não existe\n";
+        std::cout << "ERROR: Andar não existe\n";
  		return 3;
     }
     else
@@ -109,4 +106,8 @@ void Elevador::set_sentido(int andar){
     }else if(andar > this->andar_atual){
         this->sentido = DOWN;
     }
+}
+
+int Elevador::get_andar_atual(){
+    return this->andar_atual;
 }
