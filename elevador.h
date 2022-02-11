@@ -1,3 +1,6 @@
+#include <mutex>
+#include <thread>
+
 class Elevador{
     enum Sentido{ UP, DOWN };
 	Sentido sentido;
@@ -10,16 +13,19 @@ class Elevador{
         int andar_requisitado;
         int andares; //Número máx de andares (1->X)
         int n_passoas;
+        std::thread my_thread;
+        std::mutex mtx;
 
     public:
         Elevador();
         Elevador(int andares);
-
         void subindo();
         void descendo();
         void requisitado(int andar);
         void abre_porta();
         void fecha_porta();
+        int get_andar_atual();
+
     private:
         int checa_requisicao(int andar) const;
         void set_sentido(int andar);
