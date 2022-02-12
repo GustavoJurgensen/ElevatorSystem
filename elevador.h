@@ -1,5 +1,6 @@
 #include <mutex>
 #include <thread>
+#include <vector>
 
 class Elevador{
     enum Sentido{ UP, DOWN };
@@ -10,9 +11,9 @@ class Elevador{
         bool _movimentando;
         bool porta_aberta;
         int andar_atual;
-        int andar_requisitado;
+        std::vector<int> andar_requisitado;
         int andares; //Número máx de andares (1->X)
-        int n_passoas;
+        int n_pessoas;
         std::thread my_thread;
         std::mutex mtx;
 
