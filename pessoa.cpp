@@ -23,7 +23,8 @@ void Pessoa::controla_pessoa(Elevador* elevador){
 void Pessoa::requisita_elevador(Elevador* elevador){
     std::cout << "requisita_elevador" << std::endl;
     //chama o elevador e aguarda chegar (Elevador::requisitado)
-    elevador->requisitado(this->andar_atual);
+    elevador->entrada_req(this->andar_atual);
+    elevador->periodic();
     //quando chegar
     while (elevador->get_andar_atual() != this->andar_atual)
     {

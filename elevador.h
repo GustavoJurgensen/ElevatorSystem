@@ -1,9 +1,11 @@
 #include <mutex>
 #include <thread>
 #include <vector>
+#include <iostream>
+#include <algorithm>
 
 class Elevador{
-    enum Sentido{ UP, DOWN };
+    enum Sentido{ UP, DOWN, STOP, IDLE };
 	Sentido sentido;
 
     private:
@@ -20,14 +22,36 @@ class Elevador{
     public:
         Elevador();
         Elevador(int andares);
-        void subindo();
-        void descendo();
+        
+        //Adiciona andares na fila (logica diferente para requisição para entrar e sair do elevador)
+        //Return 1 if for success and 0 for fail
+        bool entrada_req(int andar);
+        bool destino_req(int andar);
+
         void requisitado(int andar);
+
         void abre_porta();
         void fecha_porta();
         int get_andar_atual();
+        int get_destino_atual();
+
+        void periodic();
 
     private:
+
+        void act();
+
+        void prox_requisicao();
         int checa_requisicao(int andar) const;
+        
         void set_sentido(int andar);
+        
+        void print_andar();
+
+        void subindo();
+        void descendo();
+
+        bool andar_disponivel(int andar); // return 1 se andar existir, 0 caso não exista
+        bool movimenta_elevador(); //return 1 if success, 0 if fail
+        
 };
