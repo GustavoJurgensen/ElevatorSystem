@@ -1,18 +1,19 @@
 #include "pessoa.h"
 
-Pessoa::Pessoa(int andar_atual,int andar_destino, Elevador* elevador){
+Pessoa::Pessoa(int idPessoa, int andar_atual,int andar_destino, Elevador* elevador){
+    this->id = idPessoa;
     this->andar_atual = andar_atual;
     this->andar_destino = andar_destino;
     this->no_elevador = false;
     my_thread = std::thread([=] { controla_pessoa(elevador); });
+    std::cout << "PESSOA " << this->id << ": Criada" << std::endl;
 }
 
 void Pessoa::join(){
-    my_thread.join();
+    this->my_thread.join();
 }
 
 void Pessoa::controla_pessoa(Elevador* elevador){
-    std::cout << "controla_pessoa" << std::endl;
     if(this->no_elevador == false){
         requisita_elevador(elevador);
     }else{
@@ -21,14 +22,17 @@ void Pessoa::controla_pessoa(Elevador* elevador){
 }
 
 void Pessoa::requisita_elevador(Elevador* elevador){
-    std::cout << "requisita_elevador" << std::endl;
+    std::cout << "PESSOA " << this->id << ": " << "Requisitado elevador no andar " << this->andar_atual << std::endl;
     //chama o elevador e aguarda chegar (Elevador::requisitado)
     elevador->entrada_req(this->andar_atual);
-    elevador->periodic();
+    
+    std::cout <<"PESSOA " << this->id << ": " << "Esperando o elevador" << std::endl;
     //quando chegar
-    while (elevador->get_andar_atual() != this->andar_atual)
+    while (elevador->get_andar_atual() != this->andar_atual || elevador->get_status_porta() == false);
     {
-        std::cout << "Esperando o elevador" << std::endl;
+            std::cout << "PESSOA " << this->id << ": " << "Entrando no elevador" << std::endl;
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+
     }
     
     this->no_elevador = true;
@@ -37,9 +41,15 @@ void Pessoa::requisita_elevador(Elevador* elevador){
 }
 
 void Pessoa::seleciona_destino(Elevador* elevador){
-    std::cout << "seleciona_destino" << std::endl;
+    std::cout << "PESSOA " << this->id << ": " << "Seleciona destino -> andar " << this->andar_destino << std::endl;
     //chama o elevador e aguarda chegar (Elevador::requisitado)
-    elevador->requisitado(this->andar_destino);
+    elevador->destino_req(this->andar_destino);
     //quando chegar
+
+    while (elevador->get_andar_atual() != this->andar_destino || elevador->get_status_porta() == false){
+
+    }
+
     this->no_elevador = false;
+    std::cout << "PESSOA " << this->id << ": " << "Sai do elevador" << std::endl;
 }

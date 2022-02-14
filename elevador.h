@@ -3,6 +3,8 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <chrono>
+#include <ctime>
 
 class Elevador{
     enum Sentido{ UP, DOWN, STOP, IDLE };
@@ -25,17 +27,22 @@ class Elevador{
         
         //Adiciona andares na fila (logica diferente para requisição para entrar e sair do elevador)
         //Return 1 if for success and 0 for fail
-        bool entrada_req(int andar);
+        bool entrada_req(int andar); 
         bool destino_req(int andar);
 
         void requisitado(int andar);
 
         void abre_porta();
         void fecha_porta();
+
+        bool get_status_porta(); //return 1 if porta aberta e 0 if porta fechada
         int get_andar_atual();
         int get_destino_atual();
 
         void periodic();
+        void join();
+
+
 
     private:
 

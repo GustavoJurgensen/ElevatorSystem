@@ -10,6 +10,8 @@ Elevador::Elevador(){
     this->porta_aberta = false;
     this->_requisitado = false;
     this->_movimentando = false;
+
+    this->my_thread = std::thread([=] { periodic(); });
 };
 
 Elevador::Elevador(int andares) : Elevador(){
@@ -17,12 +19,10 @@ Elevador::Elevador(int andares) : Elevador(){
 };
 
 void Elevador::print_andar(){
-    std::cout << "Andar atual: " << this->andar_atual << std::endl;
+    std::cout << "ELEVADOR: " <<"Destino atual: " << this->get_destino_atual() << " ------- Andar atual: " << this->andar_atual << std::endl;
 };
 
-void Elevador::subindo(){
-    std::cout << "Elevador Subindo" << std::endl;
-    
+void Elevador::subindo(){    
     // while(this->andar_atual < this->andar_requisitado[0]){
     //     this->andar_atual++;
     //     this->_movimentando = true;
@@ -46,8 +46,6 @@ void Elevador::subindo(){
 };
 
 void Elevador::descendo(){
-    std::cout << "Elevador Descendo" << std::endl;
-    
     // while(this->andar_atual > this->andar_requisitado[0]){
     //     this->andar_atual--;
     //     this->_movimentando = true;
@@ -69,18 +67,21 @@ void Elevador::descendo(){
     return;
 };
 
+bool Elevador::get_status_porta(){
+    return this->porta_aberta;
+};
+
 void Elevador::act(){
     if(this->sentido == STOP){
         this->_movimentando = false;
+        this->prox_requisicao();
 
-        std::cout << "Elevador parou" << std::endl;
+        std::cout << "ELEVADOR: " <<"Parei" << std::endl;
         this->abre_porta();
         this->fecha_porta();
-
-        this->prox_requisicao();
  
         if(this->get_destino_atual() != -1){ //return -1 se não houver mais destinos
-            std::cout << "Próximo destino: Andar " << this->get_destino_atual() << std::endl;
+            std::cout << "ELEVADOR: " <<"Próximo destino: Andar " << this->get_destino_atual() << std::endl;
         }
     }
 
@@ -96,14 +97,17 @@ void Elevador::act(){
 };
 
 void Elevador::prox_requisicao(){
+    std::lock_guard<std::mutex> lock(this->mtx);
     this->andar_requisitado.pop_back();
 };
 
 void Elevador::periodic(){
     while(1){
         if(this->andar_requisitado.empty() && this->porta_aberta == false){
+            if(this->sentido != IDLE) std::cout <<"ELEVADOR: " << "Entrando em estado IDLE" << std::endl;
             this->sentido = IDLE;
             this->_movimentando = false;
+            
 
         }
         else if(this->andar_requisitado.empty() && this->porta_aberta == true){
@@ -120,6 +124,8 @@ void Elevador::periodic(){
 
 //return destino atual do elevador
 int Elevador::get_destino_atual(){
+    std::lock_guard<std::mutex> lock(this->mtx);
+
     if(this->andar_requisitado.empty()){
         return -1;
     }
@@ -162,13 +168,20 @@ void Elevador::requisitado(int andar){
     }
 };
 
+void Elevador::join(){
+    this->my_thread.join();
+};
+
 void Elevador::abre_porta(){
-    std::cout << "Abrindo porta";
+    std::cout << "ELEVADOR: " <<"Abrindo porta" << std::endl;
+    
     this->porta_aberta = true;
+    std::this_thread::sleep_for(std::chrono::seconds(5));
+
 };
 
 void Elevador::fecha_porta(){
-    std::cout << "Fechando porta";
+    std::cout << "ELEVADOR: " <<"Fechando porta" << std::endl;
     this->porta_aberta = false;
 };
 
@@ -191,9 +204,10 @@ int Elevador::checa_requisicao(int andar) const{
 }
 
 void Elevador::set_sentido(int andar){
+    
     if(andar > this->andar_atual){
         this->sentido = UP;
-    }else if(andar > this->andar_atual){
+    }else if(andar < this->andar_atual){
         this->sentido = DOWN;
     }else{
         this->sentido = STOP;
@@ -206,6 +220,8 @@ int Elevador::get_andar_atual(){
 
 
 bool Elevador::entrada_req(int andar){
+    std::lock_guard<std::mutex> lock(this->mtx);
+
     if(!this->andar_disponivel(andar)){
         std::cout << "ERRO: Andar " << andar << " inexistente" << std::endl;
         return 0;
@@ -217,14 +233,19 @@ bool Elevador::entrada_req(int andar){
         return 0; 
     }else{
         //Andar requisitado add na fila
+        
         this->andar_requisitado.insert(this->andar_requisitado.begin(),andar);
-        std::cout << "Andar " << andar << " requisitado" << std::endl;
+        
+        std::cout << "ELEVADOR: " <<"Andar " << andar << " requisitado" << std::endl;
         return 1;
     }
 
 }
 
 bool Elevador::destino_req(int andar){
+    
+    std::lock_guard<std::mutex> lock(this->mtx);
+
     if(!this->andar_disponivel(andar)){
         std::cout << "ERRO: Andar " << andar << " inexistente" << std::endl;
         return 0;
@@ -242,13 +263,13 @@ bool Elevador::destino_req(int andar){
         this->andar_requisitado.erase(index_andar);
         
         this->andar_requisitado.push_back(dummy);
-        std::cout << "Andar " << andar << " priorizado" << std::endl;
+        std::cout << "ELEVADOR: " <<"Andar " << andar << " priorizado" << std::endl;
         return 1; 
 
     }else{
         //Andar requisitado add na fila com prioridade
         this->andar_requisitado.push_back(andar);
-        std::cout << "Andar " << andar << " requisitado" << std::endl;
+        std::cout << "ELEVADOR: " <<"Andar " << andar << " requisitado" << std::endl;
         return 1;
     }
 }
