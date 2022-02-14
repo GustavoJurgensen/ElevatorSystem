@@ -38,6 +38,7 @@ void Elevador::subindo(){
     }
 
     if (this->_movimentando){
+        std::this_thread::sleep_for(std::chrono::seconds(1));
         this->andar_atual++;
         this->print_andar();
     }
@@ -61,6 +62,7 @@ void Elevador::descendo(){
     }
 
     if (this->_movimentando){
+        std::this_thread::sleep_for(std::chrono::seconds(1));
         this->andar_atual--;
         this->print_andar();
     }
@@ -119,6 +121,7 @@ void Elevador::periodic(){
             this->act();
 
         }
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 };
 
@@ -131,41 +134,6 @@ int Elevador::get_destino_atual(){
     }
 
     return this->andar_requisitado.back();
-};
-
-void Elevador::requisitado(int andar){
-    mtx.lock();
-    int checa_requsicao = checa_requisicao(andar);
-    if(checa_requsicao == 3){
-        mtx.unlock();
-        return;
-    }
-    set_sentido(andar);
-
-    entrada_req(andar);
-  
-
-    if(this->andar_requisitado[0] == this->andar_atual){
-        this->abre_porta();
-        mtx.unlock();
-        return;
-    }
-    else{
-        this->fecha_porta();
-
-        if(this->sentido == UP){
-            this->subindo();
-        }
-        else if(this->sentido == DOWN)
-        {
-            this->descendo();
-        }
-
-        this->abre_porta();
-
-        mtx.unlock();
-        return;
-    }
 };
 
 void Elevador::join(){
@@ -182,6 +150,7 @@ void Elevador::abre_porta(){
 
 void Elevador::fecha_porta(){
     std::cout << "ELEVADOR: " <<"Fechando porta" << std::endl;
+    std::this_thread::sleep_for(std::chrono::seconds(1));
     this->porta_aberta = false;
 };
 

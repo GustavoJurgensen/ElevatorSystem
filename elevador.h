@@ -1,3 +1,6 @@
+#ifndef ELEVADOR_H
+#define ELEVADOR_H
+
 #include <mutex>
 #include <thread>
 #include <vector>
@@ -30,7 +33,7 @@ class Elevador{
         bool entrada_req(int andar); 
         bool destino_req(int andar);
 
-        void requisitado(int andar);
+        // void requisitado(int andar); DESCONTINUADA
 
         void abre_porta();
         void fecha_porta();
@@ -62,3 +65,5 @@ class Elevador{
         bool movimenta_elevador(); //return 1 if success, 0 if fail
         
 };
+
+#endif
