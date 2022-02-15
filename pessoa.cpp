@@ -28,7 +28,7 @@ void Pessoa::requisita_elevador(Elevador* elevador){
     
     std::cout <<"PESSOA " << this->id << ": " << "Esperando o elevador" << std::endl;
     //quando chegar
-    while (elevador->get_andar_atual() != this->andar_atual || elevador->get_status_porta() == false);
+    while (elevador->get_andar_atual() != this->andar_atual || elevador->get_status_porta() == false)
     {
             std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }

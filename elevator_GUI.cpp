@@ -14,20 +14,36 @@ Elevator_GUI::Elevator_GUI(){
     this->pessoa_sprite.setPosition(140,80);
     //this->pessoa_sprite.setPosition(320,160);
 
+    this->my_thread = std::thread([=] { loop(); });
+}
 
+void Elevator_GUI::loop(){
     while(this->janela.isOpen()){
         while (this->janela.pollEvent(this->evento))
         {
             if(this->evento.type == sf::Event::Closed) this->janela.close();
         }
         this->janela.clear(); // Limpa o frame anterior
-        this->janela.draw(background_sprite);
-        this->janela.draw(elevador_sprite);
-        //std::cout << elevador_sprite.getPosition().x << std::endl;
-        elevador_sprite.setPosition(288,elevador_sprite.getPosition().y+0.01);
-        this->janela.draw(pessoa_sprite);
-        this->janela.display(); // Escreve o frame atual
 
+        this->janela.draw(background_sprite);
+        
+        
+        this->atualiza_elevador();
+        this->atualiza_pessoas();
+        
+
+        this->janela.display(); // Escreve o frame atual
         
     }
+}
+
+void Elevator_GUI::atualiza_elevador(){
+    this->janela.draw(elevador_sprite);
+    //std::cout << elevador_sprite.getPosition().x << std::endl;
+    elevador_sprite.setPosition(288,elevador_sprite.getPosition().y+0.01);
+
+}
+
+void Elevator_GUI::atualiza_pessoas(){
+    this->janela.draw(pessoa_sprite);
 }

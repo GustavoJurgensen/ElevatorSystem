@@ -1,14 +1,32 @@
-output: main.o pessoa.o elevador.o
-	g++ -std=c++11 -pthread main.o pessoa.o elevador.o -o output
+COMPILADOR = g++
+FLAGS = -Wall -std=c++11 -pthread
+FLAGS_GUI = -lsfml-graphics -lsfml-window -lsfml-system
+NOME_EXECUTAVEL = aplication
+
+
+all: main.o pessoa.o elevador.o elevator_GUI.o
+	$(COMPILADOR) main.o pessoa.o elevador.o elevator_GUI.o -o $(NOME_EXECUTAVEL) $(FLAGS) $(FLAGS_GUI)
+
+valgrind:all
+	sudo valgrind --leak-check=full --show-leak-kinds=all ./$(NOME_EXECUTAVEL)
+
+run:all
+	./$(NOME_EXECUTAVEL)
 
 main.o: main.cpp
-	g++ -c main.cpp
+	$(COMPILADOR) -c main.cpp 
 
 pessoa.o: pessoa.cpp pessoa.h
-	g++ -c pessoa.cpp
+	$(COMPILADOR) -c pessoa.cpp
 
 elevador.o: elevador.cpp elevador.h
-	g++ -c elevador.cpp
+	$(COMPILADOR) -c elevador.cpp
+
+elevator_GUI.o: elevator_GUI.cpp elevator_GUI.h
+	$(COMPILADOR) -c elevator_GUI.cpp
 
 clean:
-	rm *.o output
+	rm *.o
+
+clean_bin:
+	rm $(NOME_EXECUTAVEL)

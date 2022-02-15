@@ -2,10 +2,9 @@
 #include "elevator_GUI.h"
 
 int main(){
-
-    Elevator_GUI janela;
-    Elevador elevador;
     
+    Elevator_GUI janela;
+
     Elevador elevador(10);
 
     Pessoa *pessoa1 = new Pessoa(1,4,2,&elevador);
@@ -16,7 +15,7 @@ int main(){
     pessoa1->join();
     pessoa2->join();
     pessoa3->join();
-    
+
     delete pessoa1;
 
     return 0;
