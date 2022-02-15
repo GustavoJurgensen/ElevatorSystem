@@ -13,38 +13,24 @@
 Tabela de conteúdos
 ===================
 <!--ts-->
-   * [Instalação](#instalacao)
+   * [Instacao](#instalacao)
    * [Como usar](#como-usar)
-      * [Pré Requisitos](#pre-requisitos)
+      * [Pre Requisitos](#pre-requisitos)
       * [Local files](#local-files)
       * [Remote files](#remote-files)
-   * [Tests](#testes)
+   * [Status do Projeto](#status-do-projeto)
+   * [Licenca](#licenca)
+   * [Testes](#testes)
    * [Tecnologias](#tecnologias)
 <!--te-->
 
-Instalação
+Install
 ==========
 
 Como usar
 =========
 
-Pré Requisitos
---------------
-
-Para a interface gráfica é necessário a biblioteca SFML:
-```
-sudo apt-get install libsfml-dev
-```
-
-# Status do Projeto
-
-🚀 Em construção...  🚧
-
-## Licença
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-## To COMPILE and RUN this program, simple type the command:
+### To COMPILE and RUN this program, simple type the command:
 1. COMPILE:
 ```
 make all
@@ -65,6 +51,28 @@ make clean_bin
 ```
 make valgrind
 ```
+
+Pre Requisitos
+--------------
+
+Para a interface gráfica é necessário a biblioteca SFML:
+
+```
+sudo apt-get install libsfml-dev
+```
+
+Status do Projeto
+=================
+
+🚀 Em construção...  🚧
+
+Licenca
+=======
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Testes
+======
 
 ### 🛠 Tecnologias
 
