@@ -76,10 +76,10 @@ Testes
 
 Em desenvolvimento... 🚧
 
-Tecnologias 🛠 
+Tecnologias
 ===========
 
 As seguintes ferramentas foram usadas na construção do projeto:
-
+🛠 
 - [SFML](https://www.sfml-dev.org/index.php)
 - [C++](https://isocpp.org/std/the-standard)
