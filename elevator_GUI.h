@@ -14,6 +14,10 @@ class Elevator_GUI{
         sf::RenderWindow janela;
         sf::Event evento;
 
+        int andares[5] = {294, 55, 142, 240, 331};
+        int andar_pessoa_in[5] = {180,90,170,260,360};
+        int andar_pessoa_out[5] = {514,90,170,260,360};
+
         Elevador* ptr_elevador;
         Pessoa* ptr_pessoa;
         Pessoa* ptr_pessoa2;
@@ -30,10 +34,12 @@ class Elevator_GUI{
         //Pessoa
         sf::Texture pessoa_img;
         sf::Sprite pessoa_sprite;
+        sf::Sprite pessoa_sprite2;
+        sf::Sprite pessoa_sprite3;
 
         void loop();
     public:
-        Elevator_GUI();
+        Elevator_GUI(Pessoa*,Pessoa*,Pessoa*,Elevador*);
         void update();
         void render();
 

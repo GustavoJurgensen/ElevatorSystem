@@ -55,4 +55,17 @@ void Pessoa::seleciona_destino(Elevador* elevador){
     this->no_elevador = false;
     
     std::cout << "PESSOA " << this->id << ": " << "Sai do elevador" << std::endl;
+    this->andar_atual = this->andar_destino;
+}
+
+bool Pessoa::get_no_elevador(){
+    return this->no_elevador;
+}
+
+int Pessoa::get_andar_atual(){
+    return this->andar_atual;
+}
+
+int Pessoa::get_andar_destino(){
+    return this->andar_destino;
 }

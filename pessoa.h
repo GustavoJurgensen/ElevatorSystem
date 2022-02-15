@@ -16,6 +16,9 @@ class Pessoa{
         void seleciona_destino(Elevador*);
         void controla_pessoa(Elevador*);
         void join();
+        bool get_no_elevador();
+        int get_andar_atual();
+        int get_andar_destino();
 };
 
 #endif
