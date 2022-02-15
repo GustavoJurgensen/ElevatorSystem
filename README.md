@@ -27,6 +27,15 @@ Tabela de conteúdos
 Instalacao
 ==========
 
+Linux (manual installation):
+
+```
+cd <pasta_destino>
+```
+```
+git clone https://github.com/GustavoJurgensen/ElevatorSystem.git
+```
+
 Como usar
 =========
 
