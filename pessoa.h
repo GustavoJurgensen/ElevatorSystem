@@ -1,3 +1,6 @@
+#ifndef PESSOA_H
+#define PESSOA_H
+
 #include "elevador.h"
 
 class Pessoa{
@@ -14,3 +17,5 @@ class Pessoa{
         void controla_pessoa(Elevador*);
         void join();
 };
+
+#endif
