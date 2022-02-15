@@ -13,7 +13,7 @@
 Tabela de conteúdos
 ===================
 <!--ts-->
-   * [Instacao](#instalacao)
+   * [Instalacao](#instalacao)
    * [Como usar](#como-usar)
       * [Pre Requisitos](#pre-requisitos)
       * [Local files](#local-files)
@@ -24,7 +24,7 @@ Tabela de conteúdos
    * [Tecnologias](#tecnologias)
 <!--te-->
 
-Install
+Instalacao
 ==========
 
 Como usar
@@ -74,7 +74,10 @@ Licenca
 Testes
 ======
 
-### 🛠 Tecnologias
+Em desenvolvimento... 🚧
+
+🛠 Tecnologias
+==============
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
