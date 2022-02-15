@@ -30,3 +30,6 @@ clean:
 
 clean_bin:
 	rm $(NOME_EXECUTAVEL)
+
+clean_all:
+	rm *.o $(NOME_EXECUTAVEL)

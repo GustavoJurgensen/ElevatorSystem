@@ -19,7 +19,7 @@ Elevador::Elevador(int andares) : Elevador(){
 };
 
 void Elevador::print_andar(){
-    std::cout << "ELEVADOR: " <<"Destino atual: " << this->get_destino_atual() << " ------- Andar atual: " << this->andar_atual << std::endl;
+    std::cout << "ELEVADOR: " <<"Andar atual: " << this->andar_atual << " ------- Destino atual: " << this->get_destino_atual() << std::endl;
 };
 
 void Elevador::subindo(){    
@@ -104,6 +104,8 @@ void Elevador::prox_requisicao(){
 };
 
 void Elevador::periodic(){
+    std::cout << "Inicializando ELEVADOR (" << this->andares << " andares)" << std::endl;
+
     while(1){
         if(this->andar_requisitado.empty() && this->porta_aberta == false){
             if(this->sentido != IDLE) std::cout <<"ELEVADOR: " << "Entrando em estado IDLE" << std::endl;

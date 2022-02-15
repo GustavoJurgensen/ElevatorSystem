@@ -13,6 +13,10 @@ void Pessoa::join(){
     this->my_thread.join();
 }
 
+void Pessoa::detach(){
+    this->my_thread.detach();
+};
+
 void Pessoa::controla_pessoa(Elevador* elevador){
     if(this->no_elevador == false){
         requisita_elevador(elevador);

@@ -54,7 +54,11 @@ $ make clean
 ```
 $ make clean_bin
 ```
-5. To CHECK memory leaks, type the command:
+5. To CLEAN the binaries in repository, type the command:
+```
+$ make clean_all
+```
+6. To CHECK memory leaks, type the command:
 ```
 $ make valgrind
 ```
