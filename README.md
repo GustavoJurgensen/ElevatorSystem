@@ -37,26 +37,30 @@ sudo apt-get install libsfml-dev
 
 🚀 Em construção...  🚧
 
+## Licença
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## To COMPILE and RUN this program, simple type the command:
 1. COMPILE:
 ```
-$ make all
+make all
 ```
 2. To EXECUTE the program, type the command:
 ```
-$ make run
+make run
 ```
 3. To CLEAN the objects in repository, type the command:
 ```
-$ make clean
+make clean
 ```
 4. To CLEAN the binaries in repository, type the command:
 ```
-$ make clean_bin
+make clean_bin
 ```
 5. To CHECK memory leaks, type the command:
 ```
-$ make valgrind
+make valgrind
 ```
 
 ### 🛠 Tecnologias
