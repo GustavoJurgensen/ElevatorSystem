@@ -11,57 +11,84 @@
 ---
 
 Tabela de conteúdos
-=================
+===================
 <!--ts-->
-   * [Sobre](#trabalho-elevador)
-   * [Tabela de Conteudo](#tabela-de-conteúdos)
+   * [Instalacao](#instalacao)
    * [Como usar](#como-usar)
-      * [Pré-Requisitos](#pré-requisitos)
-      * [Instalação](#to-compile-and-run-this-program-simple-type-the-command)
-   * [Tests](#testes)
-   * [Tecnologias](#-tecnologias)
+      * [Pre Requisitos](#pre-requisitos)
+      * [Local files](#local-files)
+      * [Remote files](#remote-files)
+   * [Status do Projeto](#status-do-projeto)
+   * [Licenca](#licenca)
+   * [Testes](#testes)
+   * [Tecnologias](#tecnologias)
 <!--te-->
 
-## Status do Projeto
+Instalacao
+==========
 
-🚀 Em construção...  🚧
+Linux (manual installation):
 
-## Pré-requisitos
+```
+cd <pasta_destino>
+```
+```
+git clone https://github.com/GustavoJurgensen/ElevatorSystem.git
+```
+
+Como usar
+=========
+
+### To COMPILE and RUN this program, simple type the command:
+1. COMPILE:
+```
+make all
+```
+2. To EXECUTE the program, type the command:
+```
+make run
+```
+3. To CLEAN the objects in repository, type the command:
+```
+make clean
+```
+4. To CLEAN the binaries in repository, type the command:
+```
+make clean_bin
+```
+5. To CHECK memory leaks, type the command:
+```
+make valgrind
+```
+
+Pre Requisitos
+--------------
 
 Para a interface gráfica é necessário a biblioteca SFML:
+
 ```
 sudo apt-get install libsfml-dev
 ```
 
-## To COMPILE and RUN this program, simple type the command:
-1. COMPILE:
-```
-$ make all
-```
-2. To EXECUTE the program, type the command:
-```
-$ make run
-```
-3. To CLEAN the objects in repository, type the command:
-```
-$ make clean
-```
-4. To CLEAN the binaries in repository, type the command:
-```
-$ make clean_bin
-```
-5. To CLEAN the binaries in repository, type the command:
-```
-$ make clean_all
-```
-6. To CHECK memory leaks, type the command:
-```
-$ make valgrind
-```
+Status do Projeto
+=================
 
-### 🛠 Tecnologias
+🚀 Em construção...  🚧
+
+Licenca
+=======
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Testes
+======
+
+Em desenvolvimento... 🚧
+
+Tecnologias
+===========
 
 As seguintes ferramentas foram usadas na construção do projeto:
-
+🛠 
 - [SFML](https://www.sfml-dev.org/index.php)
 - [C++](https://isocpp.org/std/the-standard)
