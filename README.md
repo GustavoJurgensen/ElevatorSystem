@@ -16,7 +16,7 @@ Tabela de conteúdos
    * [Sobre](#trabalho-elevador)
    * [Tabela de Conteudo](#tabela-de-conteúdos)
    * [Como usar](#como-usar)
-      * [Pre Requisitos](#pré-requisitos)
+      * [Pré-Requisitos](#pré-requisitos)
       * [Instalação](#to-compile-and-run-this-program-simple-type-the-command)
       * [Local files](#local-files)
       * [Remote files](#remote-files)
