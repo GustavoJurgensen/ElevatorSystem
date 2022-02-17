@@ -13,18 +13,22 @@
 Tabela de conteúdos
 =================
 <!--ts-->
-   * [Sobre](#Sobre)
-   * [Tabela de Conteudo](#tabela-de-conteudo)
-   * [Instalação](#instalacao)
+   * [Sobre](#trabalho-elevador)
+   * [Tabela de Conteudo](#tabela-de-conteúdos)
    * [Como usar](#como-usar)
-      * [Pre Requisitos](#pre-requisitos)
+      * [Pre Requisitos](#pré-requisitos)
+      * [Instalação](#to-compile-and-run-this-program-simple-type-the-command)
       * [Local files](#local-files)
       * [Remote files](#remote-files)
       * [Multiple files](#multiple-files)
       * [Combo](#combo)
    * [Tests](#testes)
-   * [Tecnologias](#tecnologias)
+   * [Tecnologias](#-tecnologias)
 <!--te-->
+
+## Status do Projeto
+
+🚀 Em construção...  🚧
 
 ## Pré-requisitos
 
@@ -32,10 +36,6 @@ Para a interface gráfica é necessário a biblioteca SFML:
 ```
 sudo apt-get install libsfml-dev
 ```
-
-## Status do Projeto
-
-🚀 Em construção...  🚧
 
 ## To COMPILE and RUN this program, simple type the command:
 1. COMPILE:
