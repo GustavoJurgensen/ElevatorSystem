@@ -18,10 +18,6 @@ Tabela de conteúdos
    * [Como usar](#como-usar)
       * [Pré-Requisitos](#pré-requisitos)
       * [Instalação](#to-compile-and-run-this-program-simple-type-the-command)
-      * [Local files](#local-files)
-      * [Remote files](#remote-files)
-      * [Multiple files](#multiple-files)
-      * [Combo](#combo)
    * [Tests](#testes)
    * [Tecnologias](#-tecnologias)
 <!--te-->
