@@ -11,12 +11,16 @@ Elevador::Elevador(){
     this->_requisitado = false;
     this->_movimentando = false;
 
-    this->my_thread = std::thread([=] { periodic(); });
+    //this->my_thread = std::thread([=] { periodic(); });
 };
 
 Elevador::Elevador(int andares) : Elevador(){
     this->andares = andares;
 };
+
+void Elevador::start(){
+    this->my_thread = std::thread([=] { periodic(); });
+}
 
 void Elevador::print_andar(){
     std::cout << "ELEVADOR: " <<"Andar atual: " << this->andar_atual << " ------- Destino atual: " << this->get_destino_atual() << std::endl;

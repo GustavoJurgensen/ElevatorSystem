@@ -11,6 +11,7 @@ class Pessoa{
         bool no_elevador;
         std::thread my_thread;
     public:
+        Pessoa(){};
         Pessoa(int id, int andar_atual, int andar_destino, Elevador*);
         void requisita_elevador(Elevador*);
         void seleciona_destino(Elevador*);

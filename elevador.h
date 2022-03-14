@@ -45,6 +45,8 @@ class Elevador{
         void periodic();
         void join();
 
+        void start();
+
 
 
     private:

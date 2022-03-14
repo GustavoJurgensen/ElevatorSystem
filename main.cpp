@@ -46,6 +46,7 @@ int main(){
     std::cout << "#---------------------------------------------------------#\n" << std::endl;
 
     Elevador elevador(n_floors);
+    elevador.start();
 
     //Exemplo Predefinido GUI
     if(selection == "y"){
