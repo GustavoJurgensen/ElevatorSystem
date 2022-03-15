@@ -41,13 +41,12 @@ class Elevador{
         bool get_status_porta(); //return 1 if porta aberta e 0 if porta fechada
         int get_andar_atual();
         int get_destino_atual();
+        std::vector<int> get_andar_requisitado();
 
         void periodic();
         void join();
 
         void start();
-
-
 
     private:
 

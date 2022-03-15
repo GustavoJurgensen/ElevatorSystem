@@ -60,6 +60,10 @@ make clean_bin
 ```
 make valgrind
 ```
+6. To run tests:
+```
+g++ Tests/mainTest.cpp Tests/elevatorTest.cpp pessoa.cpp elevador.cpp -std=c++11  -lgtest -lgtest_main -lgmock -pthread
+```
 
 Pre Requisitos
 --------------

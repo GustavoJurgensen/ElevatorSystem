@@ -193,6 +193,9 @@ int Elevador::get_andar_atual(){
     return this->andar_atual;
 }
 
+std::vector<int> Elevador::get_andar_requisitado(){
+    return this->andar_requisitado;
+}
 
 bool Elevador::entrada_req(int andar){
     std::lock_guard<std::mutex> lock(this->mtx);
@@ -240,7 +243,6 @@ bool Elevador::destino_req(int andar){
         this->andar_requisitado.push_back(dummy);
         std::cout << "ELEVADOR: " <<"Andar " << andar << " priorizado" << std::endl;
         return 1; 
-
     }else{
         //Andar requisitado add na fila com prioridade
         this->andar_requisitado.push_back(andar);
