@@ -48,22 +48,27 @@ make all
 ```
 make run
 ```
-3. To CLEAN the objects in repository, type the command:
+3. To EXECUTE tests:
+```
+make runTest
+```
+4. To CLEAN the objects in repository, type the command:
 ```
 make clean
 ```
-4. To CLEAN the binaries in repository, type the command:
+5. To CLEAN the binaries in repository, type the command:
 ```
 make clean_bin
 ```
-5. To CHECK memory leaks, type the command:
+6. To CLEAN the objects and binaries in repository, type the command:
+```
+make clean_all
+```
+7. To CHECK memory leaks, type the command:
 ```
 make valgrind
 ```
-6. To run tests:
-```
-g++ Tests/mainTest.cpp Tests/elevatorTest.cpp pessoa.cpp elevador.cpp -std=c++11  -lgtest -lgtest_main -lgmock -pthread
-```
+
 
 Pre Requisitos
 --------------
@@ -72,6 +77,12 @@ Para a interface gráfica é necessário a biblioteca SFML:
 
 ```
 sudo apt-get install libsfml-dev
+```
+
+Para teste é necessário a biblioteca gTest:
+
+```
+sudo apt-get install libgtest-dev
 ```
 
 Status do Projeto
