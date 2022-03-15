@@ -43,7 +43,7 @@ clean:
 	rm *.o
 
 clean_bin:
-	rm *.out
+	rm *.out $(NOME_EXECUTAVEL) $(NOME_TEST)
 
 clean_all:
-	rm *.o *.out
+	rm *.o *.out $(NOME_EXECUTAVEL) $(NOME_TEST)
